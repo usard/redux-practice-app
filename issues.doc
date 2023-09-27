@@ -1,0 +1,28 @@
+Actions must be plain objects. Instead, the actual type was: ''. You may need to add middleware to your store setup to handle dispatching other values, such as 'redux-thunk' to handle dispatching functions
+findings:
+actions are plain objects
+--------------------------------------------------------------
+
+__WEBPACK_IMPORTED_MODULE_3__.action is not a function
+
+findings : use 'reducers' instead of 'reducer' in createSlice and when exporting the reducer use unitSlice.reducer
+---------------------------------------------------------------
+we write state , reducer, actions at one place for example in cartSlice 
+
+-----------------------------------------------------------------------------
+createAsyncThunk : to perform asynchronous tasks in our slice .
+
+-------------------------------------------------------------------------------
+issue: i am seeing the loading screen for eternal time even after fetching the data from an api using createAsyncThunk.
+bug: while dispatching the action i used just the actionCreator without () ,using () will return the action object which it didn't in the previous case.
+example: 
+wrong:
+ useEffect(() => {
+    dispatch(getCartItems); // getCartItems is actionCreator
+  }, []);
+correct: 
+ useEffect(() => {
+    dispatch(getCartItems()); // getCartItems is actionCreator
+  }, []);
+
+-------------------------------------------------------------------------------------
